@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShapeSpace - Explore 3D Geometry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        nav {
+            background-color: #444;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .shape-display {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .shape-info {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .shape-description {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .shape-visual {
+            flex: 1;
+            text-align: center;
+        }
+
+        .sphere {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            display: inline-block;
+            background: radial-gradient(circle at 50%, #fff, #a0a0a0);
+            box-shadow: inset -40px -40px 80px rgba(0, 0, 0, 0.5);
+            animation: rotate 13s linear infinite;
+        }
+
+        .horizontal-line, .diagonal-line {
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background: rgba(0, 0, 0, 0.5);
+            top: 50%;
+            left: 0;
+        }
+
+        .horizontal-line {
+            transform: rotate(0);
+        }
+
+        .diagonal-line {
+            transform: rotate(90deg);
+        }
+
+        .curved-line {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 0, 0, 0.5);
+        }
+
+        .curved-line.first {
+            transform: rotateX(60deg);
+        }
+
+        .curved-line.second {
+            transform: rotateX(120deg);
+        }
+
+        .curved-line.third {
+            transform: rotateY(60deg);
+        }
+
+        .curved-line.fourth {
+            transform: rotateY(120deg);
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .properties {
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        .formula {
+            font-family: "Courier New", monospace;
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .input-container {
+            margin-top: 20px;
+        }
+
+        .input-container input {
+            padding: 10px;
+            margin-right: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .input-container button {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+        }
+
+        .results {
+            margin-top: 20px;
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>ShapeSpace</h1>
+    </div>
+</header>
+
+<nav>
+    <div class="container">
+        <ul>
+            <li><a href="">Cube</a></li>
+            <li><a href="index.html">Sphere</a></li>
+            <li><a href="">Cylinder</a></li>
+            <li><a href="">Cone</a></li>
+            <li><a href="">Shape Calculator</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="shape-display">
+        <h2>Sphere</h2>
+        <div class="shape-info">
+            <div class="shape-description">
+                <p>A sphere is a perfectly round geometrical object in three-dimensional space that is the surface of a completely round ball. It is the three-dimensional analog of a circle in two dimensions.</p>
+                <div class="properties">
+                    <h3>Properties:</h3>
+                    <ul>
+                        <li>Surface Area: 4πr²</li>
+                        <li>Volume: (4/3)πr³</li>
+                        <li>Where r is the radius of the sphere</li>
+                    </ul>
+                </div>
+                <div class="formula">
+                    <h3>Equation of a sphere:</h3>
+                    <p>(x - x₀)² + (y - y₀)² + (z - z₀)² = r²</p>
+                    <p>Where (x₀, y₀, z₀) is the center of the sphere</p>
+                </div>
+                <div class="input-container">
+                    <input type="number" id="radiusInput" placeholder="Enter radius" min="0">
+                    <button onclick="calculateSphereProperties()">Calculate</button>
+                </div>
+                <div class="results" id="results"></div>
+            </div>
+            <div class="shape-visual">
+                <div class="sphere">
+                    <div class="horizontal-line"></div>
+                    <div class="diagonal-line"></div>
+                    <div class="curved-line first"></div>
+                    <div class="curved-line second"></div>
+                    <div class="curved-line third"></div>
+                    <div class="curved-line fourth"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function calculateSphereProperties() {
+        const radius = parseFloat(document.getElementById('radiusInput').value);
+        if (isNaN(radius) || radius <= 0) {
+            alert('Please enter a valid radius');
+            return;
+        }
+        const surfaceArea = 4 * Math.PI * radius * radius;
+        const volume = (4 / 3) * Math.PI * radius * radius * radius;
+        const resultsDiv = document.getElementById('results');
+        resultsDiv.innerHTML = `<p>For a sphere with radius ${radius}:</p>
+                                <p>Surface Area: ${surfaceArea.toFixed(2)}</p>
+                                <p>Volume: ${volume.toFixed(2)}</p>`;
+    }
+</script>
+</body>
+</html>
