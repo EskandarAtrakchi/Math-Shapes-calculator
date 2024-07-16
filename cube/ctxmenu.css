@@ -1,0 +1,93 @@
+.ctxmenu {
+    margin: 0;
+    padding: 3px 0;
+    background: rgba(218, 222, 227, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.35);
+    border-radius: 7px;
+    font-family: Lucida Grande;
+    font-size: 14px;
+    line-height: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    z-index: 999999;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (pointer: coarse) {
+  .ctxmenu {
+    flex-direction: column-reverse;
+    font-size: 20px;
+    line-height: 25px;
+  }
+}
+
+.ctxmenu li {
+    display: block;
+    margin: 0 3px;
+    border-radius: 4px;
+    border-top: 1px solid rgba(0, 0, 0, 0);
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
+    text-align: left;
+}
+
+.ctxmenu li span {
+    padding: 2px 10px;
+    color: black;
+}
+
+.ctxmenu li::after {
+    vertical-align: 2px;
+    content: attr(label);
+}
+
+.ctxmenu li.interactive:hover {
+    background: #2866f2fa;
+    color: white;
+    border-top: 1px solid #5a82eb;
+    border-bottom: 1px solid #1758e7;
+}
+
+.ctxmenu li.interactive:hover span {
+    color: #fff;
+}
+
+.ctxmenu li.interactive:hover::after {
+    color: #fff;
+}
+
+.ctxmenu li.disabled {
+    opacity: 0.95;
+    pointer-events: none;
+}
+
+.ctxmenu li.divider {
+    border: none;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.1);
+    margin: 3px 1px 4px;
+    padding: 0;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.7;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+
+    100% {
+        opacity: 0.7;
+    }
+}
+
+.websim-loading {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.websim-focused {
+    outline: 1px solid #2866f2fa;
+    filter: brightness(1.1);
+}
