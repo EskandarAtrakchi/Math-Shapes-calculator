@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!-- saved from url=(0090)https://party.websim.ai/api/v1/sites/uPuMwnOzdmcA3Xnuq/html?origin=https%3A%2F%2Fwebsim.ai -->
+<html w-tid="0"><head w-tid="1"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>html{min-height:100%}.ctxmenu{position:fixed;border:1px solid #999;padding:2px 0;box-shadow:#aaa 3px 3px 3px;background:#fff;margin:0;z-index:9999;overflow-y:auto;font:15px Verdana, sans-serif;box-sizing:border-box}.ctxmenu li{margin:1px 0;display:block;position:relative;user-select:none}.ctxmenu li.heading{font-weight:bold;margin-left:-5px}.ctxmenu li span{display:block;padding:2px 20px;cursor:default}.ctxmenu li a{color:inherit;text-decoration:none}.ctxmenu li.icon{padding-left:15px}.ctxmenu img.icon{position:absolute;width:18px;left:10px;top:2px}.ctxmenu li.disabled{color:#ccc}.ctxmenu li.divider{border-bottom:1px solid #aaa;margin:5px 0}.ctxmenu li.interactive:hover{background:rgba(0, 0, 0, .1)}.ctxmenu li.submenu::after{content:"";position:absolute;display:block;top:0;bottom:0;right:.4em;margin:auto .1rem auto auto;border-right:1px solid #000;border-top:1px solid #000;transform:rotate(45deg);width:.3rem;height:.3rem}.ctxmenu li.submenu.disabled::after{border-color:#ccc}</style><!--<base href="" w-tid="2">--><base href=".">
+<link rel="stylesheet" href="styles.css">
+
+
+
+<title w-tid="3">CubeCalc - 3D Cube Calculator &amp; Visualizer</title>
+<style w-tid="4">
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+  .navbar {
+    background-color: #333;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  .navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  .navbar a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  .container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+    padding-top: 50px;
+  }
+  .calculator {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  .cube {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotate 10s infinite linear;
+  }
+  .face {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: rgba(0,0,0,0.1);
+    border: 2px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .front  { transform: rotateY(0deg) translateZ(100px); }
+  .right  { transform: rotateY(90deg) translateZ(100px); }
+  .back   { transform: rotateY(180deg) translateZ(100px); }
+  .left   { transform: rotateY(-90deg) translateZ(100px); }
+  .top    { transform: rotateX(90deg) translateZ(100px); }
+  .bottom { transform: rotateX(-90deg) translateZ(100px); }
+  @keyframes rotate {
+    0% { transform: rotateX(0deg) rotateY(0deg); }
+    100% { transform: rotateX(360deg) rotateY(360deg); }
+  }
+  input, button {
+    margin: 10px 0;
+    padding: 5px;
+    width: 100%;
+  }
+  button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #45a049;
+  }
+  .headercontainer {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+</style>
+</head>
+<body w-tid="5">
+
+  <header>
+    <div class="headercontainer">
+        <h1>Cube</h1>
+    </div>
+</header>
+
+  <nav>
+    <div class="navcontainer">
+        <ul>
+            <li><a href="/cube.html">Cube</a></li>
+            <li><a href="index.html">Sphere</a></li>
+            <li><a href="">Cylinder</a></li>
+        </ul>
+    </div>
+</nav>
+
+  <div class="container" w-tid="11">
+    <div class="calculator" w-tid="12">
+      <h2 w-tid="13">Cube Calculator</h2>
+      <input type="number" id="side-length" placeholder="Enter side length" w-tid="14">
+      <button onclick="calculateCube()" w-tid="15">Calculate</button>
+      <p w-tid="16">Surface Area: <span id="surface-area" w-tid="17">90774.00</span></p>
+      <p w-tid="18">Volume: <span id="volume" w-tid="19">1860867.00</span></p>
+    </div>
+
+    <div class="cube" w-tid="20" style="width: 200px; height: 200px;">
+      <div class="face front" w-tid="21" style="width: 200px; height: 200px; transform: rotateY(0deg) translateZ(100px);">Front</div>
+      <div class="face back" w-tid="22" style="width: 200px; height: 200px; transform: rotateY(180deg) translateZ(100px);">Back</div>
+      <div class="face right" w-tid="23" style="width: 200px; height: 200px; transform: rotateY(90deg) translateZ(100px);">Right</div>
+      <div class="face left" w-tid="24" style="width: 200px; height: 200px; transform: rotateY(-90deg) translateZ(100px);">Left</div>
+      <div class="face top" w-tid="25" style="width: 200px; height: 200px; transform: rotateX(90deg) translateZ(100px);">Top</div>
+      <div class="face bottom" w-tid="26" style="width: 200px; height: 200px; transform: rotateX(-90deg) translateZ(100px);">Bottom</div>
+    </div>
+  </div>
+
+  <script w-tid="27">
+    function calculateCube() {
+      const sideLength = parseFloat(document.getElementById('side-length').value);
+      if (isNaN(sideLength) || sideLength <= 0) {
+        alert('Please enter a valid positive number for the side length.');
+        return;
+      }
+      
+      const surfaceArea = 6 * sideLength * sideLength;
+      const volume = sideLength * sideLength * sideLength;
+      
+      document.getElementById('surface-area').textContent = surfaceArea.toFixed(2);
+      document.getElementById('volume').textContent = volume.toFixed(2);
+      
+      // Update cube size
+      const cube = document.querySelector('.cube');
+      const faces = document.querySelectorAll('.face');
+      const newSize = Math.min(200, sideLength * 20); // Limit max size to 200px
+      
+      cube.style.width = `${newSize}px`;
+      cube.style.height = `${newSize}px`;
+      
+      faces.forEach(face => {
+        face.style.width = `${newSize}px`;
+        face.style.height = `${newSize}px`;
+      });
+      
+      document.querySelector('.front').style.transform = `rotateY(0deg) translateZ(${newSize/2}px)`;
+      document.querySelector('.back').style.transform = `rotateY(180deg) translateZ(${newSize/2}px)`;
+      document.querySelector('.right').style.transform = `rotateY(90deg) translateZ(${newSize/2}px)`;
+      document.querySelector('.left').style.transform = `rotateY(-90deg) translateZ(${newSize/2}px)`;
+      document.querySelector('.top').style.transform = `rotateX(90deg) translateZ(${newSize/2}px)`;
+      document.querySelector('.bottom').style.transform = `rotateX(-90deg) translateZ(${newSize/2}px)`;
+    }
+  </script>
+</body></html>
