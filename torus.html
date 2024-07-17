@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<!-- saved from url=(0090)https://party.websim.ai/api/v1/sites/0SmL2SolFbqBU7rQR/html?origin=https%3A%2F%2Fwebsim.ai -->
+<html w-tid="0"><head w-tid="1"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>html{min-height:100%}.ctxmenu{position:fixed;border:1px solid #999;padding:2px 0;box-shadow:#aaa 3px 3px 3px;background:#fff;margin:0;z-index:9999;overflow-y:auto;font:15px Verdana, sans-serif;box-sizing:border-box}.ctxmenu li{margin:1px 0;display:block;position:relative;user-select:none}.ctxmenu li.heading{font-weight:bold;margin-left:-5px}.ctxmenu li span{display:block;padding:2px 20px;cursor:default}.ctxmenu li a{color:inherit;text-decoration:none}.ctxmenu li.icon{padding-left:15px}.ctxmenu img.icon{position:absolute;width:18px;left:10px;top:2px}.ctxmenu li.disabled{color:#ccc}.ctxmenu li.divider{border-bottom:1px solid #aaa;margin:5px 0}.ctxmenu li.interactive:hover{background:rgba(0, 0, 0, .1)}.ctxmenu li.submenu::after{content:"";position:absolute;display:block;top:0;bottom:0;right:.4em;margin:auto .1rem auto auto;border-right:1px solid #000;border-top:1px solid #000;transform:rotate(45deg);width:.3rem;height:.3rem}.ctxmenu li.submenu.disabled::after{border-color:#ccc}</style><!--<base href="" w-tid="2">--><base href=".">
+<link rel="stylesheet" href="styles.css">
+
+
+
+<title w-tid="3">Torus Calculator with Shape Rotation</title>
+<style w-tid="4">
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0fff0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  .navbar {
+    background-color: #228b22;
+    overflow: hidden;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  .navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  .navbar a:hover {
+    background-color: #32cd32;
+  }
+  .container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  .calculator {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    max-width: 600px;
+    width: 100%;
+  }
+  h1 {
+    color: #228b22;
+    text-align: center;
+  }
+  .input-group {
+    margin-bottom: 15px;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #228b22;
+  }
+  input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #90ee90;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  button {
+    background-color: #228b22;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: background-color 0.3s;
+  }
+  button:hover {
+    background-color: #32cd32;
+  }
+  #result {
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: #228b22;
+  }
+  .torus-container {
+    width: 300px;
+    height: 300px;
+    perspective: 1000px;
+    margin: 50px auto;
+  }
+  .torus {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotate 20s infinite linear;
+  }
+  .ring {
+    position: absolute;
+    border: 2px solid #228b22;
+    border-radius: 50%;
+    opacity: 0.7;
+  }
+  
+  @keyframes rotate {
+    0% { transform: rotateX(-20deg) rotateY(0deg); }
+    100% { transform: rotateX(-20deg) rotateY(360deg); }
+  }
+  .headercontainer {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+</style>
+</head>
+<body w-tid="5">
+  
+  <header>
+    <div class="headercontainer">
+        <h1>Cube</h1>
+    </div>
+</header>
+
+  <nav>
+    <div class="navcontainer">
+        <ul>
+            <li><a href="/cube.html">Cube</a></li>
+            <li><a href="index.html">Sphere</a></li>
+            <li><a href="">Cylinder</a></li>
+        </ul>
+    </div>
+</nav>
+
+  <div class="container" w-tid="11">
+    <div class="calculator" w-tid="12">
+      <h1 w-tid="13">Torus Calculator</h1>
+      <div class="input-group" w-tid="14">
+        <label for="majorRadius" w-tid="15">Enter the major radius (R):</label>
+        <input type="number" id="majorRadius" placeholder="Enter major radius" min="0" step="0.01" w-tid="16">
+      </div>
+      <div class="input-group" w-tid="17">
+        <label for="minorRadius" w-tid="18">Enter the minor radius (r):</label>
+        <input type="number" id="minorRadius" placeholder="Enter minor radius" min="0" step="0.01" w-tid="19">
+      </div>
+      <button onclick="calculateTorus()" w-tid="20">Calculate</button>
+      <div id="result" w-tid="21">
+        Volume: 19346398.55 cubic units<br>
+        Surface Area: 390836.33 square units
+      </div>
+      
+      <div class="torus-container" w-tid="22">
+        <div class="torus" id="torus" w-tid="23"><div class="ring" style="width: 300px; height: 300px; left: 0px; top: 0px; transform: translateZ(0px);"></div><div class="ring" style="width: 298.823px; height: 298.823px; left: 0.588426px; top: 0.588426px; transform: translateZ(9.35276px);"></div><div class="ring" style="width: 295.311px; height: 295.311px; left: 2.34442px; top: 2.34442px; transform: translateZ(18.558px);"></div><div class="ring" style="width: 289.519px; height: 289.519px; left: 5.2403px; top: 5.2403px; transform: translateZ(27.4706px);"></div><div class="ring" style="width: 281.539px; height: 281.539px; left: 9.23038px; top: 9.23038px; transform: translateZ(35.95px);"></div><div class="ring" style="width: 271.497px; height: 271.497px; left: 14.2517px; top: 14.2517px; transform: translateZ(43.8624px);"></div><div class="ring" style="width: 259.55px; height: 259.55px; left: 20.2252px; top: 20.2252px; transform: translateZ(51.083px);"></div><div class="ring" style="width: 245.887px; height: 245.887px; left: 27.0566px; top: 27.0566px; transform: translateZ(57.4981px);"></div><div class="ring" style="width: 230.724px; height: 230.724px; left: 34.6381px; top: 34.6381px; transform: translateZ(63.0064px);"></div><div class="ring" style="width: 214.3px; height: 214.3px; left: 42.8501px; top: 42.8501px; transform: translateZ(67.521px);"></div><div class="ring" style="width: 196.873px; height: 196.873px; left: 51.5633px; top: 51.5633px; transform: translateZ(70.9708px);"></div><div class="ring" style="width: 178.72px; height: 178.72px; left: 60.6401px; top: 60.6401px; transform: translateZ(73.3013px);"></div><div class="ring" style="width: 160.125px; height: 160.125px; left: 69.9375px; top: 69.9375px; transform: translateZ(74.4759px);"></div><div class="ring" style="width: 141.383px; height: 141.383px; left: 79.3087px; top: 79.3087px; transform: translateZ(74.4759px);"></div><div class="ring" style="width: 122.788px; height: 122.788px; left: 88.6061px; top: 88.6061px; transform: translateZ(73.3013px);"></div><div class="ring" style="width: 104.634px; height: 104.634px; left: 97.6829px; top: 97.6829px; transform: translateZ(70.9708px);"></div><div class="ring" style="width: 87.2078px; height: 87.2078px; left: 106.396px; top: 106.396px; transform: translateZ(67.521px);"></div><div class="ring" style="width: 70.7836px; height: 70.7836px; left: 114.608px; top: 114.608px; transform: translateZ(63.0064px);"></div><div class="ring" style="width: 55.6206px; height: 55.6206px; left: 122.19px; top: 122.19px; transform: translateZ(57.4981px);"></div><div class="ring" style="width: 41.9579px; height: 41.9579px; left: 129.021px; top: 129.021px; transform: translateZ(51.083px);"></div><div class="ring" style="width: 30.011px; height: 30.011px; left: 134.994px; top: 134.994px; transform: translateZ(43.8624px);"></div><div class="ring" style="width: 19.9683px; height: 19.9683px; left: 140.016px; top: 140.016px; transform: translateZ(35.95px);"></div><div class="ring" style="width: 11.9881px; height: 11.9881px; left: 144.006px; top: 144.006px; transform: translateZ(27.4706px);"></div><div class="ring" style="width: 6.19638px; height: 6.19638px; left: 146.902px; top: 146.902px; transform: translateZ(18.558px);"></div><div class="ring" style="width: 2.68439px; height: 2.68439px; left: 148.658px; top: 148.658px; transform: translateZ(9.35276px);"></div><div class="ring" style="width: 1.50754px; height: 1.50754px; left: 149.246px; top: 149.246px; transform: translateZ(9.1387e-15px);"></div><div class="ring" style="width: 2.68439px; height: 2.68439px; left: 148.658px; top: 148.658px; transform: translateZ(-9.35276px);"></div><div class="ring" style="width: 6.19638px; height: 6.19638px; left: 146.902px; top: 146.902px; transform: translateZ(-18.558px);"></div><div class="ring" style="width: 11.9881px; height: 11.9881px; left: 144.006px; top: 144.006px; transform: translateZ(-27.4706px);"></div><div class="ring" style="width: 19.9683px; height: 19.9683px; left: 140.016px; top: 140.016px; transform: translateZ(-35.95px);"></div><div class="ring" style="width: 30.011px; height: 30.011px; left: 134.994px; top: 134.994px; transform: translateZ(-43.8624px);"></div><div class="ring" style="width: 41.9579px; height: 41.9579px; left: 129.021px; top: 129.021px; transform: translateZ(-51.083px);"></div><div class="ring" style="width: 55.6206px; height: 55.6206px; left: 122.19px; top: 122.19px; transform: translateZ(-57.4981px);"></div><div class="ring" style="width: 70.7836px; height: 70.7836px; left: 114.608px; top: 114.608px; transform: translateZ(-63.0064px);"></div><div class="ring" style="width: 87.2078px; height: 87.2078px; left: 106.396px; top: 106.396px; transform: translateZ(-67.521px);"></div><div class="ring" style="width: 104.634px; height: 104.634px; left: 97.6829px; top: 97.6829px; transform: translateZ(-70.9708px);"></div><div class="ring" style="width: 122.788px; height: 122.788px; left: 88.6061px; top: 88.6061px; transform: translateZ(-73.3013px);"></div><div class="ring" style="width: 141.383px; height: 141.383px; left: 79.3087px; top: 79.3087px; transform: translateZ(-74.4759px);"></div><div class="ring" style="width: 160.125px; height: 160.125px; left: 69.9375px; top: 69.9375px; transform: translateZ(-74.4759px);"></div><div class="ring" style="width: 178.72px; height: 178.72px; left: 60.6401px; top: 60.6401px; transform: translateZ(-73.3013px);"></div><div class="ring" style="width: 196.873px; height: 196.873px; left: 51.5633px; top: 51.5633px; transform: translateZ(-70.9708px);"></div><div class="ring" style="width: 214.3px; height: 214.3px; left: 42.8501px; top: 42.8501px; transform: translateZ(-67.521px);"></div><div class="ring" style="width: 230.724px; height: 230.724px; left: 34.6381px; top: 34.6381px; transform: translateZ(-63.0064px);"></div><div class="ring" style="width: 245.887px; height: 245.887px; left: 27.0566px; top: 27.0566px; transform: translateZ(-57.4981px);"></div><div class="ring" style="width: 259.55px; height: 259.55px; left: 20.2252px; top: 20.2252px; transform: translateZ(-51.083px);"></div><div class="ring" style="width: 271.497px; height: 271.497px; left: 14.2517px; top: 14.2517px; transform: translateZ(-43.8624px);"></div><div class="ring" style="width: 281.539px; height: 281.539px; left: 9.23038px; top: 9.23038px; transform: translateZ(-35.95px);"></div><div class="ring" style="width: 289.519px; height: 289.519px; left: 5.2403px; top: 5.2403px; transform: translateZ(-27.4706px);"></div><div class="ring" style="width: 295.311px; height: 295.311px; left: 2.34442px; top: 2.34442px; transform: translateZ(-18.558px);"></div><div class="ring" style="width: 298.823px; height: 298.823px; left: 0.588426px; top: 0.588426px; transform: translateZ(-9.35276px);"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <script w-tid="24">
+    function calculateTorus() {
+      const R = parseFloat(document.getElementById('majorRadius').value);
+      const r = parseFloat(document.getElementById('minorRadius').value);
+      
+      if (isNaN(R) || isNaN(r) || R <= 0 || r <= 0 || R <= r) {
+        document.getElementById('result').innerHTML = "Please enter valid positive numbers. Major radius must be greater than minor radius.";
+        return;
+      }
+      
+      const volume = 2 * Math.pow(Math.PI, 2) * R * Math.pow(r, 2);
+      const surfaceArea = 4 * Math.pow(Math.PI, 2) * R * r;
+      
+      document.getElementById('result').innerHTML = `
+        Volume: ${volume.toFixed(2)} cubic units<br>
+        Surface Area: ${surfaceArea.toFixed(2)} square units
+      `;
+      
+      renderTorus(R, r);
+    }
+    
+    function renderTorus(R, r) {
+      const torus = document.getElementById('torus');
+      torus.innerHTML = ''; // Clear previous render
+      
+      const scale = 150 / (R + r); // Scale to fit in container
+      const numRings = 50;
+      const numPointsPerRing = 50;
+      
+      for (let i = 0; i < numRings; i++) {
+        const ring = document.createElement('div');
+        ring.className = 'ring';
+        const theta = (i / numRings) * 2 * Math.PI;
+        const ringR = R + r * Math.cos(theta);
+        const z = r * Math.sin(theta);
+        
+        ring.style.width = `${2 * ringR * scale}px`;
+        ring.style.height = `${2 * ringR * scale}px`;
+        ring.style.left = `${150 - ringR * scale}px`;
+        ring.style.top = `${150 - ringR * scale}px`;
+        ring.style.transform = `translateZ(${z * scale}px)`;
+        
+        torus.appendChild(ring);
+      }
+    }
+    
+    // Initial torus render
+    renderTorus(3, 1);
+  </script>
+</body></html>
