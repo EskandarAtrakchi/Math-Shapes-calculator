@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShapeSpace - Explore 3D Geometry</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>ShapeSpace</h1>
+    </div>
+</header>
+
+<nav>
+    <div class="container">
+        <ul>
+            <li><a href="cube.html">Cube</a></li>
+            <li><a href="sphere.html">Sphere</a></li>
+            <li><a href="index.html">Donald</a></li>
+            <li><a href="simiSphere.html">SimiSphere</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="shape-display">
+        <h2>Sphere</h2>
+        <div class="shape-info">
+            <div class="shape-description">
+                <p>A sphere is a perfectly round geometrical object in three-dimensional space that is the surface of a completely round ball. It is the three-dimensional analog of a circle in two dimensions.</p>
+                <div class="properties">
+                    <h3>Properties:</h3>
+                    <ul>
+                        <li>Surface Area: 4πr²</li>
+                        <li>Volume: (4/3)πr³</li>
+                        <li>Where r is the radius of the sphere</li>
+                    </ul>
+                </div>
+                <div class="formula">
+                    <h3>Equation of a sphere:</h3>
+                    <p>(x - x₀)² + (y - y₀)² + (z - z₀)² = r²</p>
+                    <p>Where (x₀, y₀, z₀) is the center of the sphere</p>
+                </div>
+                <div class="input-container">
+                    <input type="number" id="radiusInput" placeholder="Enter radius" min="0">
+                    <button onclick="calculateSphereProperties()">Calculate</button>
+                </div>
+                <div class="results" id="results"></div>
+            </div>
+            <div class="shape-visual">
+                <div class="sphere">
+                    <div class="horizontal-line"></div>
+                    <div class="diagonal-line"></div>
+                    <div class="curved-line first"></div>
+                    <div class="curved-line second"></div>
+                    <div class="curved-line third"></div>
+                    <div class="curved-line fourth"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function calculateSphereProperties() {
+        const radius = parseFloat(document.getElementById('radiusInput').value);
+        if (isNaN(radius) || radius <= 0) {
+            alert('Please enter a valid radius');
+            return;
+        }
+        const surfaceArea = 4 * Math.PI * radius * radius;
+        const volume = (4 / 3) * Math.PI * radius * radius * radius;
+        const resultsDiv = document.getElementById('results');
+        resultsDiv.innerHTML = `<p>For a sphere with radius ${radius}:</p>
+                                <p>Surface Area: ${surfaceArea.toFixed(2)}</p>
+                                <p>Volume: ${volume.toFixed(2)}</p>`;
+    }
+</script>
+</body>
+</html>

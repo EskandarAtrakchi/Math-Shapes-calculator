@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<!-- saved from url=(0090)https://party.websim.ai/api/v1/sites/XMEGdEvriUMwyNaTv/html?origin=https%3A%2F%2Fwebsim.ai -->
+<html w-tid="0"><head w-tid="1"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>html{min-height:100%}.ctxmenu{position:fixed;border:1px solid #999;padding:2px 0;box-shadow:#aaa 3px 3px 3px;background:#fff;margin:0;z-index:9999;overflow-y:auto;font:15px Verdana, sans-serif;box-sizing:border-box}.ctxmenu li{margin:1px 0;display:block;position:relative;user-select:none}.ctxmenu li.heading{font-weight:bold;margin-left:-5px}.ctxmenu li span{display:block;padding:2px 20px;cursor:default}.ctxmenu li a{color:inherit;text-decoration:none}.ctxmenu li.icon{padding-left:15px}.ctxmenu img.icon{position:absolute;width:18px;left:10px;top:2px}.ctxmenu li.disabled{color:#ccc}.ctxmenu li.divider{border-bottom:1px solid #aaa;margin:5px 0}.ctxmenu li.interactive:hover{background:rgba(0, 0, 0, .1)}.ctxmenu li.submenu::after{content:"";position:absolute;display:block;top:0;bottom:0;right:.4em;margin:auto .1rem auto auto;border-right:1px solid #000;border-top:1px solid #000;transform:rotate(45deg);width:.3rem;height:.3rem}.ctxmenu li.submenu.disabled::after{border-color:#ccc}</style><!--<base href="" w-tid="2">--><base href=".">
+<link rel="stylesheet" href="styles.css">
+
+<title w-tid="3">Semisphere Calculator with Shape Rotation</title>
+<style w-tid="4">
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #e6f3ff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  .navbar {
+    background-color: #4682b4;
+    overflow: hidden;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  .navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  .navbar a:hover {
+    background-color: #5f9ea0;
+  }
+  .container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  .calculator {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    max-width: 600px;
+    width: 100%;
+  }
+  h1 {
+    color: #4682b4;
+    text-align: center;
+  }
+  .input-group {
+    margin-bottom: 15px;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #4682b4;
+  }
+  input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #87ceeb;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  button {
+    background-color: #4682b4;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: background-color 0.3s;
+  }
+  button:hover {
+    background-color: #5f9ea0;
+  }
+  #result {
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: #4682b4;
+  }
+  .semisphere-container {
+    width: 300px;
+    height: 300px;
+    perspective: 1000px;
+    margin: 50px auto;
+  }
+  .semisphere {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotate 20s infinite linear;
+  }
+  .surface {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 2px solid #4682b4;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 120%, #87ceeb, #4682b4);
+    opacity: 0.7;
+  }
+  .base {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 2px solid #4682b4;
+    border-radius: 50%;
+    background-color: rgba(70, 130, 180, 0.3);
+  }
+  
+  @keyframes rotate {
+    0% { transform: rotateX(-20deg) rotateY(0deg); }
+    100% { transform: rotateX(-20deg) rotateY(360deg); }
+  }
+  .headercontainer {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+</style>
+</head>
+<body w-tid="5">
+  <header>
+    <div class="headercontainer">
+        <h1>Cube</h1>
+    </div>
+</header>
+
+  <nav>
+    <div class="navcontainer">
+        <ul>
+            <li><a href="cube.html">Cube</a></li>
+            <li><a href="sphere.html">Sphere</a></li>
+            <li><a href="index.html">Donald</a></li>
+            <li><a href="simiSphere.html">SimiSphere</a></li>
+        </ul>
+    </div>
+</nav>
+  <div class="container" w-tid="11">
+    <div class="calculator" w-tid="12">
+      <h1 w-tid="13">Semisphere Calculator</h1>
+      <div class="input-group" w-tid="14">
+        <label for="radius" w-tid="15">Enter the radius:</label>
+        <input type="number" id="radius" placeholder="Enter radius" min="0" step="0.01" w-tid="16">
+      </div>
+      <button onclick="calculateSemisphere()" w-tid="17">Calculate</button>
+      <div id="result" w-tid="18">
+        Volume: 2.691529832592019e+31 cubic units<br>
+        Surface Area: 5.170884654811281e+21 square units
+      </div>
+      
+      <div class="semisphere-container" w-tid="19">
+        <div class="semisphere" id="semisphere" w-tid="20"><div class="base" style="width: 280px; height: 280px; transform: translate(-50%, -50%);"></div><div class="surface" style="width: 21.9685px; height: 21.9685px; transform: translate(-50%, -50%) translateZ(139.568px);"></div><div class="surface" style="width: 43.8017px; height: 43.8017px; transform: translate(-50%, -50%) translateZ(138.276px);"></div><div class="surface" style="width: 65.3647px; height: 65.3647px; transform: translate(-50%, -50%) translateZ(136.132px);"></div><div class="surface" style="width: 86.5248px; height: 86.5248px; transform: translate(-50%, -50%) translateZ(133.148px);"></div><div class="surface" style="width: 107.151px; height: 107.151px; transform: translate(-50%, -50%) translateZ(129.343px);"></div><div class="surface" style="width: 127.117px; height: 127.117px; transform: translate(-50%, -50%) translateZ(124.741px);"></div><div class="surface" style="width: 146.3px; height: 146.3px; transform: translate(-50%, -50%) translateZ(119.37px);"></div><div class="surface" style="width: 164.58px; height: 164.58px; transform: translate(-50%, -50%) translateZ(113.262px);"></div><div class="surface" style="width: 181.845px; height: 181.845px; transform: translate(-50%, -50%) translateZ(106.457px);"></div><div class="surface" style="width: 197.99px; height: 197.99px; transform: translate(-50%, -50%) translateZ(98.9949px);"></div><div class="surface" style="width: 212.914px; height: 212.914px; transform: translate(-50%, -50%) translateZ(90.9227px);"></div><div class="surface" style="width: 226.525px; height: 226.525px; transform: translate(-50%, -50%) translateZ(82.2899px);"></div><div class="surface" style="width: 238.739px; height: 238.739px; transform: translate(-50%, -50%) translateZ(73.1498px);"></div><div class="surface" style="width: 249.482px; height: 249.482px; transform: translate(-50%, -50%) translateZ(63.5587px);"></div><div class="surface" style="width: 258.686px; height: 258.686px; transform: translate(-50%, -50%) translateZ(53.5757px);"></div><div class="surface" style="width: 266.296px; height: 266.296px; transform: translate(-50%, -50%) translateZ(43.2624px);"></div><div class="surface" style="width: 272.264px; height: 272.264px; transform: translate(-50%, -50%) translateZ(32.6824px);"></div><div class="surface" style="width: 276.553px; height: 276.553px; transform: translate(-50%, -50%) translateZ(21.9008px);"></div><div class="surface" style="width: 279.137px; height: 279.137px; transform: translate(-50%, -50%) translateZ(10.9843px);"></div><div class="surface" style="width: 280px; height: 280px; transform: translate(-50%, -50%) translateZ(8.57253e-15px);"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <script w-tid="21">
+    function calculateSemisphere() {
+      const radius = parseFloat(document.getElementById('radius').value);
+      
+      if (isNaN(radius) || radius <= 0) {
+        document.getElementById('result').innerHTML = "Please enter a valid positive number for the radius.";
+        return;
+      }
+      
+      const volume = (2/3) * Math.PI * Math.pow(radius, 3);
+      const surfaceArea = 3 * Math.PI * Math.pow(radius, 2);
+      
+      document.getElementById('result').innerHTML = `
+        Volume: ${volume.toFixed(2)} cubic units<br>
+        Surface Area: ${surfaceArea.toFixed(2)} square units
+      `;
+      
+      renderSemisphere(radius);
+    }
+    
+    function renderSemisphere(radius) {
+      const semisphere = document.getElementById('semisphere');
+      semisphere.innerHTML = ''; // Clear previous render
+      
+      const scale = 140 / radius; // Scale to fit in container
+      
+      // Create base circle
+      const base = document.createElement('div');
+      base.className = 'base';
+      base.style.width = `${2 * radius * scale}px`;
+      base.style.height = `${2 * radius * scale}px`;
+      base.style.transform = 'translate(-50%, -50%)';
+      semisphere.appendChild(base);
+      
+      // Create semisphere surface
+      const segments = 20;
+      for (let i = 0; i < segments; i++) {
+        const surface = document.createElement('div');
+        surface.className = 'surface';
+        const segmentRadius = radius * Math.sin(Math.PI * (i + 1) / (2 * segments));
+        const segmentHeight = radius * Math.cos(Math.PI * (i + 1) / (2 * segments));
+        surface.style.width = `${2 * segmentRadius * scale}px`;
+        surface.style.height = `${2 * segmentRadius * scale}px`;
+        surface.style.transform = `translate(-50%, -50%) translateZ(${segmentHeight * scale}px)`;
+        semisphere.appendChild(surface);
+      }
+    }
+    
+    // Initial semisphere render
+    renderSemisphere(1);
+  </script>
+</body></html>
